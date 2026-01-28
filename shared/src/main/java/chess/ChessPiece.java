@@ -70,19 +70,27 @@ public class ChessPiece {
         moveCalculator calc;
         if(board.getPiece(myPosition).getPieceType() == PieceType.BISHOP){
             calc = new bishopMovesCalculator();
+            return calc.possibleMoves(board,myPosition);
         }
         if(board.getPiece(myPosition).getPieceType() == PieceType.ROOK){
             calc = new rookMovesCalculator();
+            return calc.possibleMoves(board,myPosition);
         }
         if(board.getPiece(myPosition).getPieceType() == PieceType.QUEEN){
             calc = new queenMovesCalculator();
+            return calc.possibleMoves(board,myPosition);
         }
         if(board.getPiece(myPosition).getPieceType() == PieceType.KING){
             calc = new kingMovesCalculator();
+            return calc.possibleMoves(board,myPosition);
+        }
+        if(board.getPiece(myPosition).getPieceType() == PieceType.KNIGHT){
+            calc = new knightMovesCalculator();
+            return calc.possibleMoves(board,myPosition);
         }
         else{
             calc = new bishopMovesCalculator();
+            return calc.possibleMoves(board,myPosition);
         }
-        return calc.possibleMoves(board,myPosition);
     }
 }
