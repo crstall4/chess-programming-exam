@@ -89,7 +89,7 @@ public class ChessPiece {
             return calc.possibleMoves(board,myPosition);
         }
         else{
-            calc = new bishopMovesCalculator();
+            calc = new pawnMovesCalculator();
             return calc.possibleMoves(board,myPosition);
         }
     }
