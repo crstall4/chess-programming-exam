@@ -110,7 +110,12 @@ public class ChessGame {
      * @param board the new board to use
      */
     public void setBoard(ChessBoard board) {
-        throw new RuntimeException("Not implemented");
+        for(int i = 1; i <= 8; i++){
+            for(int j = 1; j <= 8; j++){
+                ChessPosition pos = new ChessPosition(i,j);
+                this.board.addPiece(pos,board.getPiece(pos));
+            }
+        }
     }
 
     /**
