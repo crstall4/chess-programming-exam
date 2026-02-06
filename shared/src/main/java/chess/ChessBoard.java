@@ -1,6 +1,7 @@
 package chess;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -12,6 +13,15 @@ import java.util.Objects;
 public class ChessBoard {
 
     ChessPiece[][] squares = new ChessPiece[8][8];
+
+    //Stole this from the tests and modified it
+    private static final Map<ChessPiece.PieceType, String> PIECE_TO_CHAR_MAP = Map.of(
+            ChessPiece.PieceType.PAWN, "p",
+            ChessPiece.PieceType.KNIGHT, "n",
+            ChessPiece.PieceType.ROOK, "r",
+            ChessPiece.PieceType.QUEEN, "q",
+            ChessPiece.PieceType.KING, "k",
+            ChessPiece.PieceType.BISHOP, "b");
 
     public ChessBoard() {
         resetBoard();
@@ -79,10 +89,27 @@ public class ChessBoard {
         squares[7][5] = new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.BISHOP);
         squares[7][6] = new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.KNIGHT);
         squares[7][7] = new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.ROOK);
+    }
 
-
-
-
-
+    @Override
+    public String toString(){
+        StringBuilder output = new StringBuilder();
+        for(int row = 1; row <= 8; row++){
+            output.append("|");
+            for(int col = 1; col <= 8; col++){
+                ChessPosition pos = new ChessPosition(row, col);
+                ChessPiece piece = getPiece(pos);
+                if(piece == null){
+                    output.append(" ");
+                    output.append("|");
+                }
+                else{
+                    output.append(PIECE_TO_CHAR_MAP.get(piece.getPieceType()));
+                    output.append("|");
+                }
+            }
+            output.append("\n");
+        }
+        return output.toString();
     }
 }

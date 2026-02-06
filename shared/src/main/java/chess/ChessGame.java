@@ -1,6 +1,7 @@
 package chess;
 
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * For a class that can manage a chess game, making moves on a board
@@ -71,6 +72,12 @@ public class ChessGame {
         }
         board.addPiece(start,null);
         board.addPiece(move.getEndPosition(),piece);
+        if (teamTurn == TeamColor.BLACK){
+            teamTurn = TeamColor.WHITE;
+        }
+        else {
+            teamTurn = TeamColor.BLACK;
+        }
     }
 
     /**
@@ -124,6 +131,6 @@ public class ChessGame {
      * @return the chessboard
      */
     public ChessBoard getBoard() {
-        throw new RuntimeException("Not implemented");
+        return board;
     }
 }
