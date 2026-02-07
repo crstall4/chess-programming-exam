@@ -68,6 +68,9 @@ public class ChessGame {
             throw new InvalidMoveException("You tried to move a piece that doesn't exist.");
         }
         if(!piece.pieceMoves(board,start).contains(move)){
+            for(ChessMove possibleMove : piece.pieceMoves(board,start)){
+                System.out.println(possibleMove);
+            }
             throw new InvalidMoveException("You tried to make an invalid move.");
         }
         board.addPiece(start,null);
